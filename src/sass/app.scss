@@ -1,3 +1,5 @@
+@import './variable';
+
 .inner {
   width: 100%;
   max-width: 1000px;
@@ -11,8 +13,6 @@
   align-items: center;
 }
 
-$maxwidth: 1000px;
-$brandColor: #cd6799;
 
 .header {
   display: flex;
@@ -108,42 +108,65 @@ $brandColor: #cd6799;
         }
       }
     }
-/*    &__btn {
-      &.is-facebook {
-        @include btn(#4668b3);
-      }
-      &.is-google {
-        @include btn(#de5745);
-      }
-      &.is-twitter {
-        @include btn(#2fbbed);
-      }
-      &.is-pinterest {
-        @include btn(#d94348);
-      }
-      &.is-behance {
-        @include btn(#3079ff);
-      }
-      &.is-dribbble {
-        @include btn(#ed6397);
-      }
-    }*/
-    $class: is-facebook, is-google, is-twitter, is-pinteres, is-behance, is-dribbble;
-    $btnColor: #4668b3, #de5745, #2fbbed, #d94348, #3079ff, #ed6397;
+    &__btn {
 
-    ul {
-      & > li {
-        @each $btn in $class {
-          $index_key: index($class, $btn);
+      @debug $map;
 
-          &.sns_#{$class} {
-            a {
-              background-color: nth($btnColor, $index_key);
-            }
-          }
+      @each $class, $color in $map {
+        &.is-#{$class} {
+          // @include btn(map-get($map, $class));
+          @include btn($color);
         }
       }
+      // $categoryNames: facebook, google, twitter, pinterest, behance, dribbble;
+      // $btnColor: #4668b3, #de5745, #2fbbed, #d94348, #3079ff, #ed6397;
+
+      // @each $i in $categoryNames {
+      //   $index_key: index($categoryNames, $i);
+
+      //   &.is-#{$i} {
+      //     // background-color: nth($btnColor, $index_key);
+      //     @include btn(nth($btnColor, $index_key));
+      //   }
+      // }
+      // &.is-facebook {
+      //   @include btn(#4668b3);
+      // }
+      // &.is-google {
+      //   @include btn(#de5745);
+      // }
+      // &.is-twitter {
+      //   @include btn(#2fbbed);
+      // }
+      // &.is-pinterest {
+      //   @include btn(#d94348);
+      // }
+      // &.is-behance {
+      //   @include btn(#3079ff);
+      // }
+      // &.is-dribbble {
+      //   @include btn(#ed6397);
+      // }
     }
   }
 }
+//       $categoryNames: is-facebook, is-google, is-twitter, is-pinteres, is-behance, is-dribbble;
+//       $btnColor: #4668b3, #de5745, #2fbbed, #d94348, #3079ff, #ed6397;
+
+//       ul {
+//         & > li {
+//           @each $btn in $category_names {
+//             $index_key: index($category_names, $btn);
+
+//             &.btn_#{$category_names} {
+//               a {
+//                 background-color: nth($btnColor, $index_key);
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
